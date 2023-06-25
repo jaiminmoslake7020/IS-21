@@ -1,12 +1,15 @@
 {
   "name": "ecc-dssb-is21-code-challenge-req101408",
-  "author": "Jaimin Pandya",
   "workspaces": [
     "packages/*"
   ],
   "scripts": {
     "run:server": "",
     "run:web": "cd packages/web && npm run start"
+  },
+  "author": {
+    "name": "Jaimin Pandya",
+    "email": "jaiminmoslake7020@gmail.com"
   },
   "version": "0.0.0"
 }
