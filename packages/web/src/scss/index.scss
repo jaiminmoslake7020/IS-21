@@ -1,0 +1,7 @@
+@import "app/globals/variables";
+@import "app/components/base/tailwind";
+@import "app/components/base/btn";
+
+.app-wrapper{
+  @apply relative;
+}
