@@ -3,13 +3,18 @@
   "workspaces": [
     "packages/*"
   ],
+  "private": true,
   "scripts": {
     "run:server": "",
-    "run:web": "cd packages/web && npm run start"
+    "run:web": "cd packages/web && npm run start",
+    "build": ""
   },
   "author": {
     "name": "Jaimin Pandya",
     "email": "jaiminmoslake7020@gmail.com"
   },
-  "version": "0.0.0"
+  "version": "0.0.0",
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  }
 }
