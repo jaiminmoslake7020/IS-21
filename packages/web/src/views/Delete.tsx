@@ -7,9 +7,9 @@ import Modal from '@mui/material/Modal';
 import {useAppDispatch, useAppSelector} from '../redux/store';
 import {deleteProduct, getProducts} from '../services/api';
 import {FailedResponseType, SuccessResponseType} from '../types/base';
-import {setProducts} from '../redux/reducers/productsData';
+import {removeProduct, setProducts} from '../redux/reducers/productsData';
 import {addNotification} from '../redux/reducers/feedback';
-import {addNewErrorMsgWithTitle} from '../utils/helpers/feedback';
+import {addNewErrorMsgWithTitle, addNewSuccessMsgWithTitle} from '../utils/helpers/feedback';
 import {Product} from '../types/app';
 import Header from '../components/app/Header';
 
@@ -47,32 +47,16 @@ function Delete(props: HomePropTypes) {
 
   const productArray = products.filter((p:Product) => p.productId === id);
   const product = productArray.length === 1 ? productArray[0] : undefined;
-
-  useEffect(() => {
-    const mounts = () => {
-      if (products.length === 0) {
-        getProducts().then((r:SuccessResponseType | FailedResponseType) => {
-          const { isSuccess, response: data, error } = r;
-          if (isSuccess) {
-            dispatch(setProducts(data));
-          } else if (error && error.id) {
-            dispatch(addNotification(error));
-          } else {
-            const eTwo = addNewErrorMsgWithTitle();
-            dispatch(addNotification(eTwo));
-          }
-          setProductsLoading(false);
-        });
-      }
-    };
-    return mounts();
-  }, [productsLoading, products])
+  const { productName } = product || {};
 
   const deleteProductFunction = useCallback((id:string) => {
     deleteProduct(id).then((r:SuccessResponseType | FailedResponseType) => {
       const { isSuccess, response: data, error } = r;
+      console.log('deleteProduct', r);
       if (isSuccess) {
-        dispatch(setProducts(data));
+        dispatch(removeProduct(id));
+        dispatch(addNotification(addNewSuccessMsgWithTitle('Success', `${productName} has been successfully removed.`)));
+        navigate('/');
       } else if (error && error.id) {
         dispatch(addNotification(error));
       } else {
@@ -80,7 +64,7 @@ function Delete(props: HomePropTypes) {
         dispatch(addNotification(eTwo));
       }
     });
-  }, []);
+  }, [productName, navigate]);
 
   return (
     (product && product.productId)
@@ -98,7 +82,11 @@ function Delete(props: HomePropTypes) {
               Notice
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-              Are you sure you want to remove this Product?
+              Are you sure you want to remove this Product
+              {' '}
+              <strong>{productName}</strong>
+              {' '}
+              ?
             </Typography>
             <div className="btn-row all-end mt-4 w-full">
               <button type="button"

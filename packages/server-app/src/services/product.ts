@@ -3,7 +3,7 @@ import {Product} from '../models/Product';
 import {Error} from '../schema/error.schema'
 import {ObjectLiteral} from 'typeorm';
 import {CreateProductInput, DeleteProductInput, UpdateProductInput} from '../schema/product.schema';
-import {bulkInsertProductDeveloper, bulkUpdateProductDeveloper} from './productDeveloper';
+import {bulkInsertProductDeveloper, bulkUpdateProductDeveloper, removeByProductId} from './productDeveloper';
 import {Success} from '../schema/success.schema';
 
 const getProductRepo = () => {
@@ -115,7 +115,7 @@ export const  deleteProduct = async (productInput:DeleteProductInput):Promise<Su
             message: "Product not found."
         };
     }
-
+    await removeByProductId(productToRemove);
     await getProductRepo().remove(productToRemove)
     return {
         status: 200,

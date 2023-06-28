@@ -4,7 +4,7 @@ import {
 } from '../../types/reducers';
 
 export const initialState = {
-  canvasLoading: false,
+  isLoading: false,
   loadingMsg: undefined,
   progressPercentage: undefined,
   loadingLocation: undefined,
@@ -16,7 +16,7 @@ export const slice = createSlice({
   reducers: {
     startLoading: (state:LoadingSlice, action) => {
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
-      state.canvasLoading = action.payload;
+      state.isLoading = action.payload;
       if (!action.payload) {
         // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
         state.loadingMsg = undefined;
@@ -24,7 +24,7 @@ export const slice = createSlice({
     },
     stopLoading: (state:LoadingSlice) => {
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
-      state.canvasLoading = false;
+      state.isLoading = false;
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
       state.loadingMsg = undefined;
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
@@ -32,14 +32,14 @@ export const slice = createSlice({
     },
     setLoadingMsg: (state:LoadingSlice, action) => {
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
-      state.canvasLoading = true;
+      state.isLoading = true;
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
       state.loadingMsg = action.payload;
     },
     setPercentage: (state:LoadingSlice, action) => {
       const { progressPercentage, loadingMsg } = action.payload;
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
-      state.canvasLoading = true;
+      state.isLoading = true;
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars
       state.progressPercentage = progressPercentage;
       // eslint-disable-next-line no-param-reassign,max-len,@typescript-eslint/no-unused-vars

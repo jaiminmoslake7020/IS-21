@@ -7,10 +7,18 @@ import {
 import {FailedResponseType, SuccessResponseType} from '../types/base';
 import {Developer, Product} from '../types/app';
 
+export const responseJson = (r:any) => {
+  console.log('r', r.status);
+  if (r.status !== 200) {
+    return undefined;
+  }
+  return r.json();
+}
+
 export const getProducts = () : Promise<SuccessResponseType | FailedResponseType> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     fetch('http://localhost:3000/api/products')
-      .then(r => r.json())
+      .then(r => responseJson(r))
       .then((response) => {
         if (response && Array.isArray(response)) {
           resolve({ ...coreSuccessResponse, response });
@@ -35,7 +43,7 @@ export const createProduct = (body:Product) : Promise<SuccessResponseType | Fail
         Accept: 'application/json'
       }
     })
-      .then(r => r.json())
+      .then(r => responseJson(r))
       .then((response) => {
         if (response) {
           resolve({ ...coreSuccessResponse, response });
@@ -60,7 +68,7 @@ export const updateProduct = (id:string, body:Product) : Promise<SuccessResponse
         Accept: 'application/json'
       }
     })
-      .then(r => r.json())
+      .then(r => responseJson(r))
       .then((response) => {
         if (response) {
           resolve({ ...coreSuccessResponse, response });
@@ -76,12 +84,13 @@ export const updateProduct = (id:string, body:Product) : Promise<SuccessResponse
 }
 
 export const deleteProduct = (id:string) : Promise<SuccessResponseType | FailedResponseType> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     fetch(`http://localhost:3000/api/products/${id}`, {
       method: 'DELETE',
     })
-      .then(r => r.json())
+      .then(r => responseJson(r))
       .then((response) => {
+        console.log('response', response);
         if (response) {
           resolve({ ...coreSuccessResponse, response });
         } else {
@@ -89,7 +98,10 @@ export const deleteProduct = (id:string) : Promise<SuccessResponseType | FailedR
           e = { ...e, caughtError: response };
           resolve({ ...coreFailedResponse, error: e });
         }
-      }).catch(() => {
+      }).catch((e) => {
+        const error = addNewErrorMsgWithTitle('API Error', 'Response is empty. Please try again later.');
+        error.caughtError = e;
+        resolve({ ...coreFailedResponse, error });
       });
   })
 }
@@ -104,7 +116,7 @@ export const createDeveloper = (body:Developer) : Promise<SuccessResponseType | 
         Accept: 'application/json'
       }
     })
-      .then(r => r.json())
+      .then(r => responseJson(r))
       .then((response) => {
         if (response) {
           resolve({ ...coreSuccessResponse, response });
@@ -113,8 +125,10 @@ export const createDeveloper = (body:Developer) : Promise<SuccessResponseType | 
           e = { ...e, caughtError: response };
           resolve({ ...coreFailedResponse, error: e });
         }
-      }).catch(() => {
-
+      }).catch((e) => {
+        const error = addNewErrorMsgWithTitle('API Error', 'Response is empty. Please try again later.');
+        error.caughtError = e;
+        resolve({ ...coreFailedResponse, error });
       });
   })
 }
@@ -122,7 +136,7 @@ export const createDeveloper = (body:Developer) : Promise<SuccessResponseType | 
 export const getDevelopers = () : Promise<SuccessResponseType | FailedResponseType> => {
   return new Promise((resolve) => {
     fetch('http://localhost:3000/api/developers')
-      .then(r => r.json())
+      .then(r => responseJson(r))
       .then((response) => {
         if (response && Array.isArray(response)) {
           resolve({ ...coreSuccessResponse, response });
@@ -131,8 +145,30 @@ export const getDevelopers = () : Promise<SuccessResponseType | FailedResponseTy
           e = { ...e, caughtError: response };
           resolve({ ...coreFailedResponse, error: e });
         }
-      }).catch(() => {
+      }).catch((e) => {
+        const error = addNewErrorMsgWithTitle('API Error', 'Response is empty. Please try again later.');
+        error.caughtError = e;
+        resolve({ ...coreFailedResponse, error });
+      });
+  })
+}
 
+export const checkHealth = () : Promise<SuccessResponseType | FailedResponseType> => {
+  return new Promise((resolve) => {
+    fetch('http://localhost:3000/api/health')
+      .then(r => r.text())
+      .then((response) => {
+        if (response) {
+          resolve({ ...coreSuccessResponse, response });
+        } else {
+          let e = addNewErrorMsgWithTitle('API Error', 'Response is empty. Please try again later.');
+          e = { ...e, caughtError: response };
+          resolve({ ...coreFailedResponse, error: e });
+        }
+      }).catch((e) => {
+        const error = addNewErrorMsgWithTitle('API Error', 'Response is empty. Please try again later.');
+        error.caughtError = e;
+        resolve({ ...coreFailedResponse, error });
       });
   })
 }

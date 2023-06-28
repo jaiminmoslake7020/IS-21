@@ -18,7 +18,7 @@ function Feedback(props:ErrorBoxProps) {
   useEffect(() => {
     setTimeout(() => {
       remove();
-    }, 10000);
+    }, 5000);
   }, []);
 
   return (

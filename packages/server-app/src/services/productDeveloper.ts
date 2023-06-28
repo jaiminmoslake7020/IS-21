@@ -1,5 +1,8 @@
 import {AppDataSource} from '../data-source';
 import {ProductDeveloper} from '../models/ProductDeveloper';
+import {Success} from '../schema/success.schema';
+import {Error} from '../schema/error.schema';
+import {Product} from '../models/Product';
 
 const getProductDeveloperRepo = () => {
     return AppDataSource.getRepository(ProductDeveloper)
@@ -48,4 +51,15 @@ export async function bulkUpdateProductDeveloper(Developers, productId: string):
 
     const pdRepo = getProductDeveloperRepo();
     await pdRepo.createQueryBuilder().insert().values(newProductDevelopers).execute();
+}
+
+export const  removeByProductId = async (productToRemove:Product):Promise<Success|Error> => {
+    let deleteResult = await getProductDeveloperRepo().delete({
+        productId: productToRemove.productId
+    });
+    console.log(`Deleted ${deleteResult.affected} product developers`);
+    return {
+        status: 200,
+        message: "Product Developers deleted successfully"
+    };
 }

@@ -2,7 +2,7 @@ import {Developer, Product} from './app';
 import {NotificationType} from './base';
 
 export type LoadingSlice = {
-  canvasLoading: boolean,
+  isLoading: boolean,
   loadingMsg: undefined | string,
   progressPercentage: undefined | number,
   loadingLocation: undefined | string,
@@ -19,5 +19,3 @@ export type ProductDataSlice = {
 export type DeveloperDataSlice = {
   developers: Developer[],
 };
-
-

@@ -4,12 +4,12 @@ import {ReduxStoreStateType, useAppSelector} from '../../redux/store';
 import LoadingBase from './LoadingBase';
 
 export default function Loading() {
-  const { loadingMsg, canvasLoading, progressPercentage } = useAppSelector(
+  const { loadingMsg, isLoading, progressPercentage } = useAppSelector(
     (store:ReduxStoreStateType) => store.loading
   );
     // console.log('imageUploadInProcess', loadingMsg);
   return (
-    canvasLoading
+    isLoading
       ? (
         <>
           {

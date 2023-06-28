@@ -15,6 +15,7 @@ import {addNewErrorMsgWithTitle} from '../utils/helpers/feedback';
 import {useAppDispatch} from '../redux/store';
 import {setDevelopers} from '../redux/reducers/developersData';
 import {setProducts} from '../redux/reducers/productsData';
+import {setLoadingMsg, stopLoading} from '../redux/reducers/loading';
 
 const router = createBrowserRouter([
   {
@@ -73,9 +74,11 @@ export default function Routes() {
     const mount = () => {
       if (!loadProducts && onlyOnceProduct) {
         onlyOnceProduct = false;
+        dispatch(setLoadingMsg('Products are being loaded.'));
         getProducts().then((r:SuccessResponseType | FailedResponseType) => {
           setProductsLoaded(true);
           const { isSuccess, response: data, error } = r;
+          dispatch(stopLoading());
           if (isSuccess) {
             dispatch(setProducts(data));
           } else if (error && error.id) {
