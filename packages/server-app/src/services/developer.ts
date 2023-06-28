@@ -20,6 +20,5 @@ export const saveDeveloper = async (productInput:CreateDeveloperInput):Promise<D
         name,
     });
 
-    const saveDeveloper = await getDeveloperRepo().save(product);
-    return saveDeveloper;
+    return await getDeveloperRepo().save(product);
 }
