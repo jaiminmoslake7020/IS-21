@@ -8,9 +8,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import Chip from '@mui/material/Chip';
 import {Link} from 'react-router-dom';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
-  DeveloperId, DeveloperName, Product, ProductLabel
+  DeveloperId, Product, ProductLabel
 } from '../../types/app';
 import {useAppSelector} from '../../redux/store';
 import DeveloperLabel from './DeveloperLabel';
@@ -22,6 +22,11 @@ export default function ProductsListTable() {
   } = useAppSelector((store) => store.productsData);
 
   const [products, setFilteredProducts] = useState<Product[]>(productsInitials);
+
+  useEffect(() => {
+    setFilteredProducts(productsInitials);
+  }, [productsInitials])
+
   return (
     <>
       <div className="flex flex-col md:flex-row w-full items-center">
@@ -35,7 +40,10 @@ export default function ProductsListTable() {
           </h1>
         </div>
         <div className="w-full md:w-1/2 lg:w-2/3">
-          <SearchBar setFilteredProducts={setFilteredProducts} />
+          <SearchBar setFilteredProducts={(data:Product[]) => {
+            console.log('data', data);
+            setFilteredProducts(data);
+          }} />
         </div>
       </div>
       <TableContainer className="product-list-table" component={Paper}>
@@ -52,7 +60,7 @@ export default function ProductsListTable() {
               <TableCell align="center">{ProductLabel.Developers}</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody className={"tbody"}>
             {products.map((product: Product) => (
               <TableRow
                 key={product.productId}

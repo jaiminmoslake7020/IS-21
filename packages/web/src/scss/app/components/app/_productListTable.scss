@@ -10,6 +10,9 @@
       }
     }
   }
+  tbody.tbody{
+    @apply max-h-[10vh] overflow-y-auto;
+  }
 
   .MuiChip-root{
     @apply m-1 #{!important};
