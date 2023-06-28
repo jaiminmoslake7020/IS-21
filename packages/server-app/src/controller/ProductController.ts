@@ -1,9 +1,9 @@
-import { NextFunction, Request, Response } from "express"
+import { Request, Response } from "express"
 import {deleteProduct, getProductById, getProducts, saveProduct, updateProduct} from '../services/product';
 import {CreateProductInput, ReadProductInput, UpdateProductInput} from '../schema/product.schema';
 
 
-export const listProductHandler = async(request: Request, response: Response, next: NextFunction)=> {
+export const listProductHandler = async(request: Request, response: Response)=> {
     try{
         const products = await getProducts("1", {});
         return response.json(products);
@@ -15,7 +15,7 @@ export const listProductHandler = async(request: Request, response: Response, ne
     }
 }
 
-export const getProductHandler = async(request: Request<ReadProductInput['params']>, response: Response, next: NextFunction)=> {
+export const getProductHandler = async(request: Request<ReadProductInput['params']>, response: Response)=> {
     try{
         const id = request.params.id
         return response.json(await getProductById(id));
@@ -27,7 +27,7 @@ export const getProductHandler = async(request: Request<ReadProductInput['params
     }
 }
 
-export const createProductHandler = async(request: Request<{}, {}, CreateProductInput["body"]>, response: Response, next: NextFunction)=> {
+export const createProductHandler = async(request: Request<{}, {}, CreateProductInput["body"]>, response: Response)=> {
     try{
         return response.json(await saveProduct(request));
     } catch (e) {
@@ -38,7 +38,7 @@ export const createProductHandler = async(request: Request<{}, {}, CreateProduct
     }
 }
 
-export const updateProductHandler = async(request: Request<UpdateProductInput['params'],{}, UpdateProductInput['body']>, response: Response, next: NextFunction) => {
+export const updateProductHandler = async(request: Request<UpdateProductInput['params'],{}, UpdateProductInput['body']>, response: Response) => {
     try{
         return response.json(await updateProduct(request));
     } catch (e) {
@@ -49,7 +49,7 @@ export const updateProductHandler = async(request: Request<UpdateProductInput['p
     }
 }
 
-export const deleteProductHandler = async(request: Request, response: Response, next: NextFunction)=> {
+export const deleteProductHandler = async(request: Request, response: Response)=> {
     try{
         const products = await deleteProduct(request);
         return response.json(products);

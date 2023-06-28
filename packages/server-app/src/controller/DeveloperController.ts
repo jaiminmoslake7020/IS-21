@@ -1,9 +1,9 @@
-import { NextFunction, Request, Response } from "express"
+import { Request, Response } from "express"
 import {saveDeveloper, getDevelopers} from '../services/developer';
 import {CreateDeveloperInput} from '../schema/developer.schema';
 
 
-export const listDeveloperHandler = async(request: Request, response: Response, next: NextFunction)=> {
+export const listDeveloperHandler = async(request: Request, response: Response)=> {
     try{
         const products = await getDevelopers();
         return response.json(products);
@@ -15,7 +15,7 @@ export const listDeveloperHandler = async(request: Request, response: Response, 
     }
 }
 
-export const createDeveloperHandler = async(request: Request<{}, {}, CreateDeveloperInput["body"]>, response: Response, next: NextFunction)=> {
+export const createDeveloperHandler = async(request: Request<{}, {}, CreateDeveloperInput["body"]>, response: Response)=> {
     try{
         return response.json(await saveDeveloper(request));
     } catch (e) {
