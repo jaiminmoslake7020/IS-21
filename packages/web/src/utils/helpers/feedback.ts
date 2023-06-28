@@ -1,6 +1,6 @@
 import {
   ErrorType, SuccessType, WarningType, InfoType
-} from '../../types/reducers';
+} from '../../types/base';
 import {getCurrentTime, uuid4} from './string';
 
 const titleBase = 'Error';

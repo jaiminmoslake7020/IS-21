@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {NotificationType, FeedbackSlice} from '../../types/reducers';
+import {FeedbackSlice} from '../../types/reducers';
+import {NotificationType} from '../../types/base';
 
 const initialState = {
   notifications: [],

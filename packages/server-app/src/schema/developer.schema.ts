@@ -9,6 +9,8 @@ import { object, string, TypeOf } from "zod";
  *       required:
  *        - name
  *       properties:
+ *         id:
+ *           type: string
  *         name:
  *           type: string
  */

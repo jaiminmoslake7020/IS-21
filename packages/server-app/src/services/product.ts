@@ -13,7 +13,7 @@ const getProductRepo = () => {
 
 export const getProducts = async (where: string, whereArgs: ObjectLiteral):Promise<Product[]> => {
     let query = getProductRepo().createQueryBuilder('product');
-    query = query.select('product.*, GROUP_CONCAT(d.name) as DevelopersString ');
+    query = query.select('product.*, GROUP_CONCAT(d.id) as DevelopersString ');
     query = query.innerJoin('product_developer', 'pd', 'pd.product_id=productId')
     query = query.innerJoin('developer', 'd', 'd.id=pd.developer_id')
     query = query.where(where, whereArgs)

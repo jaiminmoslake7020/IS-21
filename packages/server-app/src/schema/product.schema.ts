@@ -1,4 +1,4 @@
-import { object, string, TypeOf, date, array } from "zod";
+import { object, string, TypeOf, array } from "zod";
 
 /**
  * @openapi
@@ -46,7 +46,7 @@ const payload = {
     scrumMasterName: string({
       required_error: "Scrum Master Name is required",
     }),
-    startDate: date({
+    startDate: string({
       required_error: "Start Date is required",
     }),
     methodology: string({

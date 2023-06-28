@@ -1,15 +1,10 @@
 // Variable override,
-$theme-colors: (
-  "primary": #FDD200,
-  "dark": #242b3e
-);
-
 @font-face {
   font-family: 'Manrope';
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../../../assets/fonts-manrope/static/Manrope-Regular.ttf) format('truetype');
+  src: url(../assets/fonts-manrope/static/Manrope-Regular.ttf) format('truetype');
 }
 /* cyrillic */
 @font-face {
@@ -17,7 +12,7 @@ $theme-colors: (
   font-style: normal;
   font-weight: 500;
   font-display: swap;
-  src: url(../../../assets/fonts-manrope/static/Manrope-Medium.ttf) format('truetype');
+  src: url(../assets/fonts-manrope/static/Manrope-Medium.ttf) format('truetype');
 }
 /* greek-ext */
 @font-face {
@@ -25,7 +20,7 @@ $theme-colors: (
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(../../../assets/fonts-manrope/static/Manrope-SemiBold.ttf) format('truetype');
+  src: url(../assets/fonts-manrope/static/Manrope-SemiBold.ttf) format('truetype');
 }
 /* greek */
 @font-face {
@@ -33,7 +28,7 @@ $theme-colors: (
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(../../../assets/fonts-manrope/static/Manrope-Bold.ttf) format('truetype');
+  src: url(../assets/fonts-manrope/static/Manrope-Bold.ttf) format('truetype');
 }
 /* vietnamese */
 @font-face {
@@ -41,7 +36,7 @@ $theme-colors: (
   font-style: normal;
   font-weight: 900;
   font-display: swap;
-  src: url(../../../assets/fonts-manrope/static/Manrope-ExtraBold.ttf) format('truetype');
+  src: url(../assets/fonts-manrope/static/Manrope-ExtraBold.ttf) format('truetype');
 }
 /* latin-ext */
 @font-face {
@@ -49,7 +44,7 @@ $theme-colors: (
   font-style: normal;
   font-weight: 100;
   font-display: swap;
-  src: url(../../../assets/fonts-manrope/static/Manrope-ExtraLight.ttf) format('truetype');
+  src: url(../assets/fonts-manrope/static/Manrope-ExtraLight.ttf) format('truetype');
 }
 /* latin */
 @font-face {
@@ -57,7 +52,7 @@ $theme-colors: (
   font-style: normal;
   font-weight: 300;
   font-display: swap;
-  src: url(../../../assets/fonts-manrope/static/Manrope-Light.ttf) format('truetype');
+  src: url(../assets/fonts-manrope/static/Manrope-Light.ttf) format('truetype');
 }
 
 // stylelint-disable value-keyword-case
@@ -68,3 +63,4 @@ $font-family-base:        $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
 
 $font-size-base:  1rem !default;
+

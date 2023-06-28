@@ -1,6 +1,5 @@
 import * as Faker from 'faker';
 import { define } from 'typeorm-seeding';
-import * as uuid from 'uuid';
 
 import { Developer } from '../../models/Developer';
 
@@ -10,7 +9,6 @@ define(Developer, (faker: typeof Faker, settings: { role: string }) => {
     const lastName = faker.name.lastName(gender);
 
     const developer = new Developer();
-    developer.id = uuid.v1();
     developer.name = firstName+" "+lastName;
     return developer;
 });

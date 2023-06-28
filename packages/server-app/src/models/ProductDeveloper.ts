@@ -1,12 +1,12 @@
 import { IsNotEmpty } from 'class-validator';
-import {Column, Entity, JoinColumn, ManyToOne, PrimaryColumn} from 'typeorm';
+import {Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn} from 'typeorm';
 import {Developer} from './Developer';
 import {Product} from './Product';
 
 @Entity()
 export class ProductDeveloper {
 
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     public id: string;
 
     @IsNotEmpty()

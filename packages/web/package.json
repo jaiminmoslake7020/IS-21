@@ -20,7 +20,9 @@
     "@mui/icons-material": "^5.11.16",
     "@mui/lab": "^5.0.0-alpha.134",
     "@mui/material": "^5.13.6",
-    "@mui/types": "^7.2.4"
+    "@mui/types": "^7.2.4",
+    "react-router-dom": "^6.2.1",
+    "@mui/x-date-pickers": "^6.9.0"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
@@ -52,6 +54,7 @@
     "@emotion/styled": "^11.11.0"
   },
   "scripts": {
+    "scss-to-css-watch": "sass --watch src/scss/index.scss src/scss/output.min.css --style compressed",
     "start": "DISABLE_ESLINT_PLUGIN=true  PORT=3001 craco start",
     "build": "DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",

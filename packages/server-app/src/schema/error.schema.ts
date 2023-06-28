@@ -4,9 +4,6 @@
  *   schema:
  *     Error:
  *       type: object
- *       required:
- *        - status
- *        - message
  *       properties:
  *         status:
  *           type: number

@@ -8,9 +8,11 @@ export const listDeveloperHandler = async(request: Request, response: Response)=
         const products = await getDevelopers();
         return response.json(products);
     } catch (e) {
+        response.statusCode = 500;
         return response.json({
             status: 500,
-            message: "Failed to list developers."
+            message: "Failed to list developers.",
+            e
         });
     }
 }
@@ -19,9 +21,11 @@ export const createDeveloperHandler = async(request: Request<{}, {}, CreateDevel
     try{
         return response.json(await saveDeveloper(request));
     } catch (e) {
+        response.statusCode = 500;
         return response.json({
             status: 500,
-            message: "Failed to create developer."
+            message: "Failed to create developer.",
+            e
         });
     }
 }

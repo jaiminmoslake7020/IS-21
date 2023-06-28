@@ -1,5 +1,5 @@
 import { IsNotEmpty } from 'class-validator';
-import {Column, Entity, OneToMany, PrimaryColumn} from 'typeorm';
+import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from 'typeorm';
 import {ProductDeveloper} from './ProductDeveloper';
 
 export const MethodologyData = ['Agile','Waterfall'];
@@ -7,7 +7,7 @@ export const MethodologyData = ['Agile','Waterfall'];
 @Entity()
 export class Product {
 
-    @PrimaryColumn('uuid')
+    @PrimaryGeneratedColumn('uuid')
     public productId: string;
 
     @IsNotEmpty()

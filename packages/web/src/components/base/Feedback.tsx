@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Button from '@mui/material/Button';
 import Icon from './Icon';
-import {NotificationType} from '../../types/reducers';
+import {NotificationType} from '../../types/base';
 
 type ErrorBoxProps = {
   notification: NotificationType,

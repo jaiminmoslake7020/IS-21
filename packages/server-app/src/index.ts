@@ -5,12 +5,13 @@ import productRoutes from "./routes/productRoutes";
 import swaggerDocs from "./utils/swagger";
 import healthRoute from './routes/healthRoute';
 import developerRoutes from './routes/developerRoutes';
+import cors from 'cors';
 
 AppDataSource.initialize().then(async () => {
 
     // create express app
-    const app = express()
-    app.use(express.json());
+    const app = express();
+    app.use(cors());
     app.use(bodyParser.json())
 
     // setup express app here
@@ -23,7 +24,6 @@ AppDataSource.initialize().then(async () => {
         productRoutes(app);
         developerRoutes(app);
         swaggerDocs(app, port);
-        console.log("Express server has started on port 3000. Open http://localhost:3000/users to see results")
     });
 
 }).catch(error => console.log(error))

@@ -8,10 +8,12 @@ const options: swaggerJsdoc.Options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "REST API Docs",
+      title: "REST API Document",
       version,
     },
   },
+  host: 'localhost:3000',
+  basePath: '/api',
   apis: ["./src/routes/*.ts", "./src/schema/*.ts"],
 };
 
@@ -22,12 +24,13 @@ function swaggerDocs(app: Express, port: number) {
   app.use("/api/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
   // Docs in JSON format
-  app.get("/docs.json", (req: Request, res: Response) => {
+  app.get("/api/docs.json", (req: Request, res: Response) => {
     res.setHeader("Content-Type", "application/json");
     res.send(swaggerSpec);
   });
 
   log.info(`Docs available at http://localhost:${port}/api/docs`);
+  log.info(`Docs available at http://localhost:${port}/api/docs.json`);
 }
 
 export default swaggerDocs;

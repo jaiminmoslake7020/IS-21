@@ -3,7 +3,8 @@ import {Provider} from 'react-redux';
 import ReactDOM from 'react-dom/client';
 import {createTheme, CssBaseline, ThemeProvider} from '@mui/material';
 import './assets/icons/font-awesome';
-import './scss/index.scss';
+import './scss/output.min.css';
+// import './scss/index.scss';
 // eslint-disable-next-line import/no-named-as-default
 import store from './redux/store';
 import reportWebVitals from './reportWebVitals';
