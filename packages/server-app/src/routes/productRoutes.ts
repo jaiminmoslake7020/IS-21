@@ -71,7 +71,7 @@ function productRoutes(app: Express) {
 
     /**
      * @openapi
-     * '/api/products/{productId}':
+     * '/api/products/{id}':
      *  put:
      *     tags:
      *     - Products
