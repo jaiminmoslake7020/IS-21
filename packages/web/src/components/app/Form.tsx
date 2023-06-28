@@ -242,7 +242,7 @@ export default function Form(props:FormProps) {
                   if (isValidUrl(newLocation)) {
                     setInputLocation(newLocation);
                   } else {
-                    dispatch(addNotification(addNewErrorMsgWithTitle("Incorrect Location",'Incorrect Location. Location should be correct URL.')))
+                    dispatch(addNotification(addNewErrorMsgWithTitle('Incorrect Location', 'Incorrect Location. Location should be correct URL.')))
                   }
                 }}
                 fullWidth

@@ -30,7 +30,7 @@ export const getProducts = () : Promise<SuccessResponseType | FailedResponseType
 }
 
 export const createProduct = (body:Product) : Promise<SuccessResponseType | FailedResponseType> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     fetch('http://localhost:3000/api/products', {
       method: 'POST',
       body: JSON.stringify(body),
@@ -55,7 +55,7 @@ export const createProduct = (body:Product) : Promise<SuccessResponseType | Fail
 }
 
 export const updateProduct = (id:string, body:Product) : Promise<SuccessResponseType | FailedResponseType> => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     fetch(`http://localhost:3000/api/products/${id}`, {
       method: 'PUT',
       body: JSON.stringify(body),

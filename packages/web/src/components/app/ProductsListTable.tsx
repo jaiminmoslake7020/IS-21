@@ -78,7 +78,7 @@ export default function ProductsListTable() {
                 <TableCell align="right">{product.scrumMasterName}</TableCell>
                 <TableCell align="right">{product.productOwnerName}</TableCell>
                 <TableCell align="center">
-                  <a className={"btn btn-link text-sm p-0 m-0 lowercase"} href={"https://"+product.location} target={"_blank"} >{product.location.toLowerCase()}</a>
+                  <a className="btn btn-link text-sm p-0 m-0 lowercase" href={`https://${product.location}`} target="_blank" rel="noreferrer" >{product.location.toLowerCase()}</a>
                 </TableCell>
                 <TableCell align="left">
                   {product.Developers.map((d: DeveloperId, index) => {
