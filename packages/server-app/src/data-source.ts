@@ -8,7 +8,7 @@ import {ProductDeveloper} from './models/ProductDeveloper';
 
 export const AppDataSource = new DataSource({
     type: "sqlite",
-    database: "/Users/Jaimin/Sites/bc-gov/Jaimin-Pandya-ecc-dssb-IS21-code-challenge-req101408/packages/server-app/server.sqlite",
+    database: "./../server.sqlite",
     synchronize: true,
     logging: false,
     entities: [Product, Developer, ProductDeveloper],
