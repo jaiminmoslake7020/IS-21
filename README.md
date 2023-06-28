@@ -4,7 +4,7 @@
 To install the
 
 ### Tech Used
-This is a monorepo, it has two packages, one is web and one is server.
+This is a monorepo, it has two packages, one is web and one is server-app.
 
 #### Web Application
 Web application is built in react. It has below technologies in it for development purpose.
@@ -15,8 +15,5 @@ Web application is built in react. It has below technologies in it for developme
 - Tailwind 
 
 #### Server Application
-Web application is built in react.  
-
-
-
+Server application is built in node js with express and typescript.  
 

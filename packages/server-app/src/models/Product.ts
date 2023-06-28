@@ -35,6 +35,10 @@ export class Product {
     @Column()
     public productOwnerName: string;
 
+    @IsNotEmpty()
+    @Column()
+    public location: string;
+
     public toString(): string {
         return `${this.productName}`;
     }

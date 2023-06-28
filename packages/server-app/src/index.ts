@@ -1,39 +1,29 @@
 import express from "express"
 import bodyParser from "body-parser"
-import { Request, Response } from "express"
 import { AppDataSource } from "./data-source"
-import { Routes } from "./routes";
+import productRoutes from "./routes/productRoutes";
+import swaggerDocs from "./utils/swagger";
+import healthRoute from './routes/healthRoute';
+import developerRoutes from './routes/developerRoutes';
 
 AppDataSource.initialize().then(async () => {
 
     // create express app
     const app = express()
+    app.use(express.json());
     app.use(bodyParser.json())
-
-    // register express routes from defined application routes
-    Routes.forEach(route => {
-        (app as any)[route.method](route.route, (req: Request, res: Response, next: Function) => {
-            const result = (new (route.controller as any))[route.action](req, res, next)
-            if (result instanceof Promise) {
-                result.then(result => result !== null && result !== undefined ? res.send(result) : undefined)
-
-            } else if (result !== null && result !== undefined) {
-                res.json(result)
-            }
-        })
-    })
 
     // setup express app here
     // ...
 
+    const port = 3000;
     // start express server
-    app.listen(3000)
-
-    // insert new users for test
-    // const p = new CreateProducts();
-    // p.run();
-
-
-    console.log("Express server has started on port 3000. Open http://localhost:3000/users to see results")
+    app.listen(port, () => {
+        healthRoute(app);
+        productRoutes(app);
+        developerRoutes(app);
+        swaggerDocs(app, port);
+        console.log("Express server has started on port 3000. Open http://localhost:3000/users to see results")
+    });
 
 }).catch(error => console.log(error))

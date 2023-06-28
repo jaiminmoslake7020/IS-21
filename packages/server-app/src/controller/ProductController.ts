@@ -1,90 +1,63 @@
-import { AppDataSource } from "../data-source"
 import { NextFunction, Request, Response } from "express"
-import { Product } from "../models/Product"
+import {deleteProduct, getProductById, getProducts, saveProduct, updateProduct} from '../services/product';
+import {CreateProductInput, ReadProductInput, UpdateProductInput} from '../schema/product.schema';
 
-export class ProductController {
 
-    private productRepository = AppDataSource.getRepository(Product)
-
-    async all(request: Request, response: Response, next: NextFunction) {
-        let query = this.productRepository.createQueryBuilder('product');
-        query = query.select('product.*, GROUP_CONCAT(d.name) as DevelopersString ');
-        query = query.innerJoin('product_developer', 'pd', 'pd.product_id=productId')
-        query = query.innerJoin('developer', 'd', 'd.id=pd.developer_id')
-        query = query.where("1")
-        query = query.groupBy("product.productId")
-        const result = await query.getRawMany();
-        return result.map((d) => ({...d, Developers:d.DevelopersString.split(',') }));
+export const listProductHandler = async(request: Request, response: Response, next: NextFunction)=> {
+    try{
+        const products = await getProducts("1", {});
+        return response.json(products);
+    } catch (e) {
+        return response.json({
+            status: 500,
+            message: "Failed to list products."
+        });
     }
-
-    async one(request: Request, response: Response, next: NextFunction) {
-        const id = request.params.id
-
-        let query = this.productRepository.createQueryBuilder('product');
-        query = query.select('product.*, GROUP_CONCAT(d.name) as DevelopersString ');
-        query = query.innerJoin('product_developer', 'pd', 'pd.product_id=productId')
-        query = query.innerJoin('developer', 'd', 'd.id=pd.developer_id')
-        query = query.where("product.productId=:productId", {productId: id})
-        query = query.groupBy("product.productId")
-        const result = await query.getRawMany();
-        result.map((d) => ({...d, Developers:d.DevelopersString.split(',') }));
-
-        if (
-            result.length === 0 ||
-            result[0].productId !== id
-        ) {
-            return "product not found"
-        }
-        return result[0];
-    }
-
-    async save(request: Request, response: Response, next: NextFunction) {
-        const { firstName, lastName, age } = request.body;
-
-        const product = Object.assign(new Product(), {
-            firstName,
-            lastName,
-            age
-        })
-
-        return this.productRepository.save(product)
-    }
-
-    async update(request: Request, response: Response, next: NextFunction) {
-        const id = request.params.id
-
-
-        let product = await this.productRepository.findOne({
-            where: { productId: id }
-        })
-
-        if (!product) {
-            return "product not found"
-        }
-
-        const { firstName, lastName, age } = request.body;
-
-        product = Object.assign(new Product(), {
-            firstName,
-            lastName,
-            age
-        })
-
-        return this.productRepository.save(product)
-    }
-
-    async remove(request: Request, response: Response, next: NextFunction) {
-        const id = request.params.id
-
-        let productToRemove = await this.productRepository.findOneBy({ productId:id })
-
-        if (!productToRemove) {
-            return "product not found"
-        }
-
-        await this.productRepository.remove(productToRemove)
-
-        return "product has been removed"
-    }
-
 }
+
+export const getProductHandler = async(request: Request<ReadProductInput['params']>, response: Response, next: NextFunction)=> {
+    try{
+        const id = request.params.id
+        return response.json(await getProductById(id));
+    } catch (e) {
+        return response.json({
+            status: 500,
+            message: "Failed to get product."
+        });
+    }
+}
+
+export const createProductHandler = async(request: Request<{}, {}, CreateProductInput["body"]>, response: Response, next: NextFunction)=> {
+    try{
+        return response.json(await saveProduct(request));
+    } catch (e) {
+        return response.json({
+            status: 500,
+            message: "Failed to create product."
+        });
+    }
+}
+
+export const updateProductHandler = async(request: Request<UpdateProductInput['params'],{}, UpdateProductInput['body']>, response: Response, next: NextFunction) => {
+    try{
+        return response.json(await updateProduct(request));
+    } catch (e) {
+        return response.json({
+            status: 500,
+            message: "Failed to update product."
+        });
+    }
+}
+
+export const deleteProductHandler = async(request: Request, response: Response, next: NextFunction)=> {
+    try{
+        const products = await deleteProduct(request);
+        return response.json(products);
+    } catch (e) {
+        return response.json({
+            status: 500,
+            message: "Failed to delete product."
+        });
+    }
+}
+
