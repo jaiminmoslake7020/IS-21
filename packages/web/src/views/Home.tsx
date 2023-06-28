@@ -7,7 +7,6 @@ export type HomePropTypes = {
 };
 
 function Home(props: HomePropTypes) {
-  const {} = props;
   return (
     <>
       <Header product={undefined} />

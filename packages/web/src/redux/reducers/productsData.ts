@@ -15,7 +15,7 @@ export const feedbackSlice = createSlice({
       state.products = action.payload;
     },
     addProduct: (state:ProductDataSlice, action) => {
-      let res = action.payload as Product;
+      const res = action.payload as Product;
       state.products.push(res);
     },
     updateProduct: (state:ProductDataSlice, action) => {

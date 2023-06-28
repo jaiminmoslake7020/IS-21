@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import {Link, useNavigate} from 'react-router-dom';
-import {TextField} from '@mui/material';
+import {InputAdornment, TextField} from '@mui/material';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -17,14 +17,16 @@ import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {DatePicker} from '@mui/x-date-pickers/DatePicker';
 import dayjs, {Dayjs} from 'dayjs';
-import {methodologiesList, MethodologyType, Product, ProductLabel} from '../../types/app';
+import {
+  methodologiesList, MethodologyType, Product, ProductLabel
+} from '../../types/app';
 import DeveloperForm from './DeveloperForm';
 import DeveloperSelection from './DeveloperSelection';
 import {ErrorType, FailedResponseType, SuccessResponseType} from '../../types/base';
 import {addNotification} from '../../redux/reducers/feedback';
 import {addNewErrorMsgWithTitle, addNewSuccessMsgWithTitle} from '../../utils/helpers/feedback';
 import {useAppDispatch} from '../../redux/store';
-import validateForm from '../../utils/helpers/validateForm';
+import validateForm, {isValidUrl} from '../../utils/helpers/validateForm';
 import {upsertProduct} from '../../services/api';
 import {addProduct, updateProduct} from '../../redux/reducers/productsData';
 
@@ -33,6 +35,7 @@ export type FormProps = {
 };
 
 export default function Form(props:FormProps) {
+  const bcGovUrl = 'https://github.com/bcgov/';
   const {
     product
   } = props;
@@ -230,9 +233,17 @@ export default function Form(props:FormProps) {
               <TextField
                 label={ProductLabel.location}
                 name="location"
-                value={inputLocation}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">{bcGovUrl}</InputAdornment>,
+                }}
+                value={inputLocation.replace(bcGovUrl, '')}
                 onChange={(e) => {
-                  setInputLocation(e.target.value);
+                  const newLocation = `${bcGovUrl}${e.target.value}`;
+                  if (isValidUrl(newLocation)) {
+                    setInputLocation(newLocation);
+                  } else {
+                    dispatch(addNotification(addNewErrorMsgWithTitle("Incorrect Location",'Incorrect Location. Location should be correct URL.')))
+                  }
                 }}
                 fullWidth
                 required

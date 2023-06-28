@@ -53,11 +53,11 @@ export default function ProductsListTable() {
               <TableCell align="right">{ProductLabel.methodology}</TableCell>
               <TableCell align="right">{ProductLabel.scrumMasterName}</TableCell>
               <TableCell align="right">{ProductLabel.productOwnerName}</TableCell>
-              <TableCell align="right">{ProductLabel.location}</TableCell>
+              <TableCell align="center">{ProductLabel.location}</TableCell>
               <TableCell align="center">{ProductLabel.Developers}</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody className={"tbody"}>
+          <TableBody className="tbody">
             {products.map((product: Product) => (
               <TableRow
                 key={product.productId}
@@ -77,10 +77,12 @@ export default function ProductsListTable() {
                 <TableCell align="right">{product.methodology}</TableCell>
                 <TableCell align="right">{product.scrumMasterName}</TableCell>
                 <TableCell align="right">{product.productOwnerName}</TableCell>
-                <TableCell align="right">{product.location}</TableCell>
+                <TableCell align="center">
+                  <a className={"btn btn-link text-sm p-0 m-0 lowercase"} href={"https://"+product.location} target={"_blank"} >{product.location.toLowerCase()}</a>
+                </TableCell>
                 <TableCell align="left">
                   {product.Developers.map((d: DeveloperId, index) => {
-                    return <DeveloperLabel key={`${d}-${index}`} id={d}/>;
+                    return <DeveloperLabel key={`${d}`} id={d}/>;
                   })}
                 </TableCell>
               </TableRow>

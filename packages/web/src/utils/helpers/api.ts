@@ -1,5 +1,7 @@
-import {ErrorType, FailedResponseType, FailedResponseTypeCore, SuccessResponseType,} from '../../types/base';
-import {getNewError,} from './feedback';
+import {
+  ErrorType, FailedResponseType, FailedResponseTypeCore, SuccessResponseType
+} from '../../types/base';
+import {getNewError} from './feedback';
 
 export const coreFailedResponse: FailedResponseTypeCore = {
   isSuccess: false,
@@ -17,7 +19,6 @@ export const coreSuccessResponse = {
 export const prepareFailedResponse = (
   e: any,
 ): Promise<FailedResponseType> => {
-  console.log('e', e);
   return new Promise((resolve) => {
     const {
       message,

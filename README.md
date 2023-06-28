@@ -1,7 +1,13 @@
 # IS-21
 ## Instructions for IS-21 project Installation
 
-To install the
+`yarn install`
+
+`npm run setup:db`
+
+`npm run start:server`
+
+`npm run run:web`
 
 ### Tech Used
 This is a monorepo, it has two packages, one is web and one is server-app.
@@ -13,7 +19,20 @@ Web application is built in react. It has below technologies in it for developme
 - Eslint 
 - Craco 
 - Tailwind 
+- React router
 
 #### Server Application
 Server application is built in node js with express and typescript.  
+
+- TypeOrm
+- Sqlite
+- Express 
+- NodeJs
+- Swagger
+
+Swagger Docs available at http://localhost:3000/api/docs
+
+Swagger Docs JSON available at http://localhost:3000/api/docs.json
+
+
 

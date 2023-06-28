@@ -29,7 +29,7 @@ function Header(props: LinksPropTypes) {
               {
                 !isUpdate ? (
                   <Link className="btn btn-blue" to={`/update/${product.productId}`}>
-                    Update
+                    Edit
                   </Link>
                 ) : null
               }

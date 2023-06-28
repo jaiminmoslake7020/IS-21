@@ -6,7 +6,6 @@ export type NoProductPropTypes = {
 };
 
 function NoProduct(props: NoProductPropTypes) {
-  const {} = props;
   return (
     <div>
       <div className="btn-row mb-4 all-apart">

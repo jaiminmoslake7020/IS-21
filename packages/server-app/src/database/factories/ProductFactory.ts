@@ -19,6 +19,7 @@ define(Product, (faker: typeof Faker, settings: { role: string }) => {
     product.productOwnerName = companyName;
     product.scrumMasterName = getName(faker);
     product.methodology = MethodologyData[faker.random.number(1)];
-    product.location = faker.address.city();
+    const url = faker.lorem.word();
+    product.location = "https://github.com/bcgov/"+url;
     return product;
 });

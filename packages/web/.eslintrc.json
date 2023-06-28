@@ -42,6 +42,11 @@
         "jsx-a11y/media-has-caption": "off",
         "react/react-in-jsx-scope": "off",
         "react/jsx-no-useless-fragment": "off",
-         "max-len": "off"
+         "max-len": "off",
+        "react/jsx-props-no-spreading": "off",
+        "no-console": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "no-bitwise":"off",
+        "no-mixed-operators":"off"
     }
 }

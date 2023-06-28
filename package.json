@@ -5,9 +5,9 @@
   ],
   "private": true,
   "scripts": {
-    "run:server": "",
-    "run:web": "cd packages/web && npm run start",
-    "build": ""
+    "setup:db": "cd packages/server-app && npm run db:setup",
+    "start:server": "cd packages/server-app && npm run start",
+    "run:web": "cd packages/web && npm run start"
   },
   "author": {
     "name": "Jaimin Pandya",

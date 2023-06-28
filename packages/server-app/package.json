@@ -44,8 +44,9 @@
       "typeorm": "typeorm-ts-node-esm",
       "start": "ts-node src/index.ts",
       "build": "rm -rf build && tsc",
-      "schema:drop": "ts-node --project ./tsconfig.json ./../../node_modules/typeorm/cli.js schema:drop",
-      "schema:sync": "ts-node --project ./tsconfig.json ./../../node_modules/typeorm/cli.js schema:sync",
+      "schema:init": "ts-node --project ./tsconfig.json ./../../node_modules/typeorm/cli.js schema:init",
+      "schema:drop": "ts-node --project ./tsconfig.json ./../../node_modules/typeorm/cli.js schema:drop -d ./src/data-source.ts",
+      "schema:sync": "ts-node --project ./tsconfig.json ./../../node_modules/typeorm/cli.js schema:sync -d ./src/data-source.ts",
       "seed:config": "ts-node --project ./tsconfig.json ./../../node_modules/typeorm-seeding/dist/cli.js config",
       "seed:run": "ts-node --project ./tsconfig.json ./../../node_modules/typeorm-seeding/dist/cli.js seed",
       "db:setup": "npm run schema:drop && npm run schema:sync && npm run seed:config && npm run seed:run"

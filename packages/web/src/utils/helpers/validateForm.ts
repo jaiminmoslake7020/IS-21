@@ -3,6 +3,16 @@ import {addNewErrorMsgWithTitle} from './feedback';
 import {ErrorType, FailedResponseType, SuccessResponseType} from '../../types/base';
 import {methodologiesList} from '../../types/app';
 
+export function isValidUrl(string:string) {
+  try {
+    // eslint-disable-next-line no-new
+    new URL(string);
+    return true;
+  } catch (err) {
+    return false;
+  }
+}
+
 export default function validateForm(body:any): FailedResponseType | SuccessResponseType {
   const success = { ...coreSuccessResponse, response: body };
   const e = addNewErrorMsgWithTitle('Form Validation', 'Form has errors!');
@@ -20,7 +30,7 @@ export default function validateForm(body:any): FailedResponseType | SuccessResp
     if (!scrumMasterName) {
       errorList.push(addNewErrorMsgWithTitle('Form Validation', 'Scrum Master Name must not be empty.'));
     }
-    if (!location) {
+    if (!isValidUrl(location)) {
       errorList.push(addNewErrorMsgWithTitle('Form Validation', 'Location must not be empty.'));
     }
     if (!methodology) {

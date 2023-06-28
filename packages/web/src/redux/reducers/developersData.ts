@@ -15,7 +15,7 @@ export const feedbackSlice = createSlice({
       state.developers = action.payload;
     },
     addDeveloper: (state:DeveloperDataSlice, action) => {
-      let res = action.payload as Developer;
+      const res = action.payload as Developer;
       state.developers.push(res);
     },
   },

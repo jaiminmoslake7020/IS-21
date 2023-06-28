@@ -44,8 +44,8 @@ export default function DeveloperAutoComplete(props:DeveloperAutoCompleteProps) 
           }
         }}
         options={developerList}
-        renderOption={(props, option) => (
-          <Box key={option.value} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+        renderOption={(propsKl, option) => (
+          <Box key={option.value} component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...propsKl}>
             {option.label}
           </Box>
         )}

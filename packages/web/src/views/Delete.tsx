@@ -49,12 +49,12 @@ function Delete(props: HomePropTypes) {
   const product = productArray.length === 1 ? productArray[0] : undefined;
   const { productName } = product || {};
 
-  const deleteProductFunction = useCallback((id:string) => {
-    deleteProduct(id).then((r:SuccessResponseType | FailedResponseType) => {
+  const deleteProductFunction = useCallback((idProduct:string) => {
+    deleteProduct(idProduct).then((r:SuccessResponseType | FailedResponseType) => {
       const { isSuccess, response: data, error } = r;
       console.log('deleteProduct', r);
       if (isSuccess) {
-        dispatch(removeProduct(id));
+        dispatch(removeProduct(idProduct));
         dispatch(addNotification(addNewSuccessMsgWithTitle('Success', `${productName} has been successfully removed.`)));
         navigate('/');
       } else if (error && error.id) {
