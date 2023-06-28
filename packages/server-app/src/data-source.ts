@@ -8,7 +8,7 @@ import {ProductDeveloper} from './models/ProductDeveloper';
 
 export const AppDataSource = new DataSource({
     type: "sqlite",
-    database: "./../server.sqlite",
+    database: "./server.sqlite",
     synchronize: true,
     logging: false,
     entities: [Product, Developer, ProductDeveloper],
