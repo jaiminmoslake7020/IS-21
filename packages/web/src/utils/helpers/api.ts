@@ -1,9 +1,5 @@
-import {
-  SuccessResponseType, FailedResponseType, FailedResponseTypeCore, ErrorType,
-} from '../../types/base';
-import {
-  getNewError,
-} from './feedback';
+import {ErrorType, FailedResponseType, FailedResponseTypeCore, SuccessResponseType,} from '../../types/base';
+import {getNewError,} from './feedback';
 
 export const coreFailedResponse: FailedResponseTypeCore = {
   isSuccess: false,

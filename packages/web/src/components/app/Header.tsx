@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, useLocation} from 'react-router-dom';
-import { Product } from '../../types/app';
+import {Product} from '../../types/app';
 
 export type LinksPropTypes = {
   product: Product | undefined

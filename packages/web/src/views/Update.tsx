@@ -1,13 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {useParams} from 'react-router-dom';
 import {Alert} from '@mui/material';
 import ProductUpdateBox from '../components/app/ProductUpdateBox';
-import {useAppDispatch, useAppSelector} from '../redux/store';
-import {getProducts} from '../services/api';
-import {FailedResponseType, SuccessResponseType} from '../types/base';
-import {setProducts} from '../redux/reducers/productsData';
-import {addNotification} from '../redux/reducers/feedback';
-import {addNewErrorMsgWithTitle} from '../utils/helpers/feedback';
+import {useAppSelector} from '../redux/store';
 import {Product} from '../types/app';
 import Header from '../components/app/Header';
 

@@ -1,7 +1,4 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import {createBrowserRouter, RouterProvider,} from 'react-router-dom';
 import {useEffect, useState} from 'react';
 import Home from '../views/Home';
 import View from '../views/View';

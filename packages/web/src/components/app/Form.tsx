@@ -17,9 +17,7 @@ import {LocalizationProvider} from '@mui/x-date-pickers/LocalizationProvider';
 import {AdapterDayjs} from '@mui/x-date-pickers/AdapterDayjs';
 import {DatePicker} from '@mui/x-date-pickers/DatePicker';
 import dayjs, {Dayjs} from 'dayjs';
-import {
-  methodologiesList, MethodologyType, Product, ProductLabel
-} from '../../types/app';
+import {methodologiesList, MethodologyType, Product, ProductLabel} from '../../types/app';
 import DeveloperForm from './DeveloperForm';
 import DeveloperSelection from './DeveloperSelection';
 import {ErrorType, FailedResponseType, SuccessResponseType} from '../../types/base';
@@ -28,7 +26,7 @@ import {addNewErrorMsgWithTitle, addNewSuccessMsgWithTitle} from '../../utils/he
 import {useAppDispatch} from '../../redux/store';
 import validateForm from '../../utils/helpers/validateForm';
 import {upsertProduct} from '../../services/api';
-import { addProduct, updateProduct } from '../../redux/reducers/productsData';
+import {addProduct, updateProduct} from '../../redux/reducers/productsData';
 
 export type FormProps = {
   product:Product | undefined

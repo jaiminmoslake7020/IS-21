@@ -1,6 +1,4 @@
-import {
-  ErrorType, SuccessType, WarningType, InfoType
-} from '../../types/base';
+import {ErrorType, InfoType, SuccessType, WarningType} from '../../types/base';
 import {getCurrentTime, uuid4} from './string';
 
 const titleBase = 'Error';

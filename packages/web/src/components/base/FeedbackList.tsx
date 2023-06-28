@@ -1,6 +1,6 @@
 import React from 'react';
 import Feedback from './Feedback';
-import { NotificationType } from '../../types/base';
+import {NotificationType} from '../../types/base';
 
 type ErrorListProps = {
   notifications: NotificationType[],

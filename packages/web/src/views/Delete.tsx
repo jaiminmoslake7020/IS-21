@@ -1,13 +1,13 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
 import {Alert} from '@mui/material';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import {useAppDispatch, useAppSelector} from '../redux/store';
-import {deleteProduct, getProducts} from '../services/api';
+import {deleteProduct} from '../services/api';
 import {FailedResponseType, SuccessResponseType} from '../types/base';
-import {removeProduct, setProducts} from '../redux/reducers/productsData';
+import {removeProduct} from '../redux/reducers/productsData';
 import {addNotification} from '../redux/reducers/feedback';
 import {addNewErrorMsgWithTitle, addNewSuccessMsgWithTitle} from '../utils/helpers/feedback';
 import {Product} from '../types/app';

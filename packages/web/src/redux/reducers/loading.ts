@@ -1,7 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {
-  LoadingSlice,
-} from '../../types/reducers';
+import {LoadingSlice,} from '../../types/reducers';
 
 export const initialState = {
   isLoading: false,

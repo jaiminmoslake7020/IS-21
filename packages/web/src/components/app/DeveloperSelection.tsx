@@ -3,7 +3,7 @@ import {DeveloperId} from '../../types/app';
 import RemovableDeveloperLabel from './RemovableDeveloperLabel';
 import DeveloperAutoComplete from './DeveloperAutoComplete';
 import {useAppDispatch} from '../../redux/store';
-import {addNewErrorMsgWithTitle, addNewWarningMsgWithTitle} from '../../utils/helpers/feedback';
+import {addNewWarningMsgWithTitle} from '../../utils/helpers/feedback';
 import {addNotification} from '../../redux/reducers/feedback';
 
 export type DeveloperSelectionPropTypes = {

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useEffect, useState} from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -6,12 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Chip from '@mui/material/Chip';
 import {Link} from 'react-router-dom';
-import {useEffect, useState} from 'react';
-import {
-  DeveloperId, Product, ProductLabel
-} from '../../types/app';
+import {DeveloperId, Product, ProductLabel} from '../../types/app';
 import {useAppSelector} from '../../redux/store';
 import DeveloperLabel from './DeveloperLabel';
 import SearchBar from './SearchBar';

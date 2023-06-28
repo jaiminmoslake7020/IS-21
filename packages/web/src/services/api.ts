@@ -1,9 +1,5 @@
-import {
-  coreSuccessResponse, coreFailedResponse
-} from '../utils/helpers/api';
-import {
-  addNewErrorMsgWithTitle
-} from '../utils/helpers/feedback';
+import {coreFailedResponse, coreSuccessResponse} from '../utils/helpers/api';
+import {addNewErrorMsgWithTitle} from '../utils/helpers/feedback';
 import {FailedResponseType, SuccessResponseType} from '../types/base';
 import {Developer, Product} from '../types/app';
 

@@ -1,9 +1,6 @@
 import {configureStore} from '@reduxjs/toolkit';
 import {TypedUseSelectorHook, useDispatch, useSelector} from 'react-redux';
-import {
-  DeveloperDataSlice,
-  FeedbackSlice, LoadingSlice, ProductDataSlice
-} from '../types/reducers';
+import {DeveloperDataSlice, FeedbackSlice, LoadingSlice, ProductDataSlice} from '../types/reducers';
 import feedback from './reducers/feedback';
 import loading from './reducers/loading';
 import productsData from './reducers/productsData';

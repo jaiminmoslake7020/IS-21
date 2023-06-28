@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Button from '@mui/material/Button';
 import Icon from './Icon';
 import {NotificationType} from '../../types/base';

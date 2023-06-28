@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, {useCallback} from 'react';
 import {TextField} from '@mui/material';
 import {useAppSelector} from '../../redux/store';
 import {Developer, Product} from '../../types/app';

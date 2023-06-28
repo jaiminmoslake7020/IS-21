@@ -1,7 +1,7 @@
 import React, {useCallback} from 'react';
 import {useAppDispatch, useAppSelector} from '../../redux/store';
 import FeedbackList from '../base/FeedbackList';
-import { removeNotification } from '../../redux/reducers/feedback';
+import {removeNotification} from '../../redux/reducers/feedback';
 
 function FeedbackSystem() {
   const {

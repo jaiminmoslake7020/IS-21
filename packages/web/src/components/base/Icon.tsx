@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon, FontAwesomeIconProps } from '@fortawesome/react-fontawesome';
+import React, {useEffect, useState} from 'react';
+import {FontAwesomeIcon, FontAwesomeIconProps} from '@fortawesome/react-fontawesome';
 import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import { removeProps } from '../../utils/helpers/string';
+import {removeProps} from '../../utils/helpers/string';
 
 type IconProps = FontAwesomeIconProps & {
   insideBtn?: boolean,
