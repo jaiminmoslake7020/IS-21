@@ -55,7 +55,7 @@
   },
   "scripts": {
     "scss-to-css-watch": "sass --watch src/scss/index.scss src/scss/output.min.css --style compressed",
-    "start": "DISABLE_ESLINT_PLUGIN=true  PORT=3001 craco start",
+    "start": "PORT=3001 craco start",
     "build": "DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
     "eject": "craco eject",
