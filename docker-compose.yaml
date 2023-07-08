@@ -1,0 +1,10 @@
+version: '3'
+services:
+  server-app:
+    image: testopsprocess/is21-server:0.0.1.RELEASE
+    ports:
+      - 3000:3000
+  web:
+    image: testopsprocess/is21-web:0.0.1.RELEASE
+    ports:
+      - 3001:3001

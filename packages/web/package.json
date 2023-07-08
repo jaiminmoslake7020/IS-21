@@ -22,7 +22,8 @@
     "@mui/material": "^5.13.6",
     "@mui/types": "^7.2.4",
     "react-router-dom": "^6.2.1",
-    "@mui/x-date-pickers": "^6.9.0"
+    "@mui/x-date-pickers": "^6.9.0",
+    "dayjs": "^1.10.7"
   },
   "devDependencies": {
     "@types/node": "^20.3.1",
@@ -51,11 +52,13 @@
     "sass": "^1.55.0",
     "serve": "^13.0.2",
     "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0"
+    "@emotion/styled": "^11.11.0",
+    "@babel/plugin-proposal-private-property-in-object": "7.21.11"
   },
   "scripts": {
     "scss-to-css-watch": "sass --watch src/scss/index.scss src/scss/output.min.css --style compressed",
     "start": "PORT=3001 craco start",
+    "serve": "PORT=3001 serve ./build",
     "build": "DISABLE_ESLINT_PLUGIN=true GENERATE_SOURCEMAP=false craco build",
     "test": "craco test",
     "eject": "craco eject",
